@@ -1,0 +1,121 @@
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+///////// this code is for back button disable//////////////
+        history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+</script>
+
+<html>
+
+<script type="text/javascript">
+
+function validateForm()	{
+		                                     
+	
+	
+	var mtid_arr = document.getElementsByName('Mturk_id');
+	var mtidFilled = false;
+	
+	for ( var i=0; i < mtid_arr.length; i++)	{
+		if (mtid_arr[i].value != "")
+			mtidFilled = true;		
+	}
+	
+	if (!mtidFilled)	{
+		alert('Please enter your Worker ID ');
+		return false;
+	}
+	var uid = document.demographics.Mturk_id;
+	var uid_len = uid.value.length;
+	var first = uid.value.charAt(0);
+	// if (uid_len <10  || uid_len >20)
+	// {
+	// 	alert("Please provide a valid Mturk Id ");
+	// 	return false;
+	// }
+	 if (uid.value.charAt(0) == " ")
+	 {
+	 	alert("Please provide a valid Worker Id ");
+	 	return false;
+	 }
+	// if(/^[a-zA-Z0-9]*$/.test(uid.value) == false){
+		// //error message
+		// alert("Please enter your Worker ID ");
+		// return false;
+	// }	
+	
+};
+
+</script>
+
+
+
+<head>
+<style>
+.button{
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+
+
+</head>
+
+<body onload="assignHandler()">
+<br><br><br><br><br><br><br>
+<table border="1" cellpadding="10" cellspacing="0" style="width: 500px;" align="center">
+<tr>
+<td>
+	<div id="main-content">
+		<center><font size="7"><b>Welcome</b></font><br></center>
+	</div>
+		
+		<div class="terms" readonly="read-only">
+				
+			
+			<form  name="demographics" id="demographics" method="post"  action="pre_consent.php" onsubmit="return validateForm()">
+			<br><br>
+			
+				<br><br><br>
+				<center><b><label style="color:#444499;">Please enter your Worker ID :</label></b>&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="text" id="Mturk_id" name="Mturk_id" value="" size="20" /> <center>
+			
+			
+				<br><br><br>
+				<center><button name="submit"  class="button" type="submit" >Submit</button> </center>
+
+			</form>
+	
+
+		</div>
+</td>
+</tr>
+</table>
+
+</body>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br>
+<?php
+					
+	include_once('footer.php'); 
+	
+	?>
+	
+	
+	
+</html>
